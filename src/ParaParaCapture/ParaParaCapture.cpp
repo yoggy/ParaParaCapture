@@ -156,7 +156,7 @@ void save_image(const cv::Mat &img)
 	_snprintf_s(image_filename, MAX_PATH, "%s-%04d.jpg", base_filename, frame_count);
 	cv::imwrite(image_filename, img);
 	frame_count++;
-	if (frame_count >= 10000) {
+	if (frame_count >= 1000) {
 		stop_capture();
 	}
 }

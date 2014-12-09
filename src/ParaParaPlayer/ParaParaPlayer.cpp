@@ -72,9 +72,9 @@ int main(int argc, char* argv[])
 
 		DWORD t = ::GetTickCount();
 		DWORD diff = t - st;
-
 		if (diff < frame_t * 1000) {
 			double sleep_time = frame_t * 1000 - diff;
+			printf("sleep_time=%f\n", sleep_time);
 			::Sleep((DWORD)sleep_time);
 		}
 		st = t;
