@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "CvSharedMat.h"
+#include "../common/CvSharedMat.h"
 
 std::vector<cv::Mat > images;
 

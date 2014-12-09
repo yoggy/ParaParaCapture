@@ -89,11 +89,11 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CvSharedMat.h" />
+    <ClInclude Include="..\common\CvSharedMat.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CvSharedMat.cpp" />
+    <ClCompile Include="..\common\CvSharedMat.cpp" />
     <ClCompile Include="ParaParaPlayer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
