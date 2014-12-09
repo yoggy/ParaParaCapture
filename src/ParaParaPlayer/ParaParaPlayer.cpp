@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "CvSharedMat.h"
 
 std::vector<cv::Mat > images;
 
@@ -23,6 +24,9 @@ int main(int argc, char* argv[])
 		printf("error : load_images() ...filename=%s\n", argv[1]);
 		return -1;
 	}
+
+	CvSharedMat shared_mat("movie", images[0].size(), CV_8UC3);
+
 
 	bool break_flag = false;
 	bool enable_play = false;
