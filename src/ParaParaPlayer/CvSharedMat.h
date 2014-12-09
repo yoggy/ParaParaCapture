@@ -14,6 +14,7 @@ public:
 	int shmem_size() const;
 	cv::Size size() const;
 	int channels() const;
+	int type() const;
 
 	void upload(const cv::Mat &image);
 	void download(cv::Mat &image);

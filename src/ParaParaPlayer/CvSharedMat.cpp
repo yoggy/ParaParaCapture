@@ -124,6 +124,11 @@ int CvSharedMat::channels() const
 	return this->image_.channels();
 }
  
+int CvSharedMat::type() const
+{
+	return this->image_.type();
+}
+
 cv::Size CvSharedMat::size() const
 {
 	return this->image_.size();

@@ -37,7 +37,6 @@ int main(int argc, char* argv[])
 	play_icon[1] = cv::Point(100, 50);
 	play_icon[2] = cv::Point(20, 90);
 
-
 	DWORD st = ::GetTickCount();
 	while (!break_flag) {
 		cv::Mat img = images[frame_count];
