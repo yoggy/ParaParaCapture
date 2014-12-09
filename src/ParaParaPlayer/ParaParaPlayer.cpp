@@ -40,15 +40,21 @@ int main(int argc, char* argv[])
 
 	DWORD st = ::GetTickCount();
 	while (!break_flag) {
+		cv::Mat img = images[frame_count];
+
+		// キャプチャ画像を共有メモリにアップロード
+		shared_mat.upload(img);
+
 		// キャプチャ画像を描画
 		cv::Mat canvas;
-		images[frame_count].copyTo(canvas);
+		img.copyTo(canvas);
 		if (enable_play) {
 			int n = frame_count / 15;
 			if (n % 2 == 0) {
 				cv::fillConvexPoly(canvas, play_icon, 3, CV_RGB(0, 255, 0));
 			}
 		}
+
 		cv::imshow("ParaParaPlayer", canvas);
 
 		if (enable_play) {
