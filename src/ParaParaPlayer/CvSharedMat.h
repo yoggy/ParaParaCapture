@@ -8,7 +8,7 @@
 class CvSharedMat
 {
 public:
-	CvSharedMat(const char *name, const cv::Size &size, const int &type, const bool &use_mutex = false);
+	CvSharedMat(const char *name, const cv::Size &size, const int &type);
 	~CvSharedMat(void);
 
 	int shmem_size() const;
@@ -22,7 +22,6 @@ public:
 protected:
 	char		name_[256];
 	HANDLE		shmem_;
-	HANDLE		mutex_;
 	uchar		*buf_;
 	cv::Mat		image_;
 };

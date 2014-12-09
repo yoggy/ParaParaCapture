@@ -3,30 +3,9 @@
 #include "CvSharedMat.h"
 
 #pragma warning(disable : 4996)
-
-class ScopedMutexLock {
-protected:
-	HANDLE mutex_;
-
-public:
-	ScopedMutexLock(HANDLE mutex) : mutex_(INVALID_HANDLE_VALUE) {
-		mutex_ = mutex;
-		if (mutex_ != INVALID_HANDLE_VALUE) {
-			WaitForSingleObject(mutex_, INFINITE);
-		}
-	};
-
-	virtual ~ScopedMutexLock() {
-		if (mutex_ != INVALID_HANDLE_VALUE) {
-			::ReleaseMutex(mutex_);
-			mutex_ = INVALID_HANDLE_VALUE;
-		}
-	};
-};
-
  
-CvSharedMat::CvSharedMat(const char *name, const cv::Size &size, const int &type, const bool &use_mutex)
-	: shmem_(INVALID_HANDLE_VALUE), mutex_(INVALID_HANDLE_VALUE), buf_(NULL)
+CvSharedMat::CvSharedMat(const char *name, const cv::Size &size, const int &type)
+	: shmem_(INVALID_HANDLE_VALUE), buf_(NULL)
 {
 	assert(name_ != NULL);
 	assert(size.width > 0);
@@ -35,12 +14,6 @@ CvSharedMat::CvSharedMat(const char *name, const cv::Size &size, const int &type
 	strncpy(name_, name, 255);
 	
 	image_.create(size, type);
-
-	if (use_mutex) {
-		char mutex_name[512];
-		_snprintf(mutex_name, 511, "mutex_%s", name_); 
-		mutex_ = ::CreateMutex(NULL, FALSE, mutex_name);
-	}
 
 	char shared_memory_name[512];
 	_snprintf(shared_memory_name, 511, "shared_%s", name_); 
@@ -70,17 +43,10 @@ CvSharedMat::~CvSharedMat(void)
 		::CloseHandle(shmem_);
 		shmem_ = INVALID_HANDLE_VALUE;
 	}
-
-	if (mutex_ != INVALID_HANDLE_VALUE) {
-		::ReleaseMutex(mutex_);
-		mutex_ = INVALID_HANDLE_VALUE;
-	}
 }
  
 void CvSharedMat::upload(const cv::Mat &image)
 {
-	ScopedMutexLock lock(mutex_);
-
 	assert(buf_ != NULL);
 
 	if (image.empty()) {
@@ -98,8 +64,6 @@ void CvSharedMat::upload(const cv::Mat &image)
  
 void CvSharedMat::download(cv::Mat &image)
 {
-	ScopedMutexLock lock(mutex_);
-
 	assert(buf_ != NULL);
 
 	if (image.empty()) {
