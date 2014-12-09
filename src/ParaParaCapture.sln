@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParaParaPlayer", "ParaParaP
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParaParaConvert", "ParaParaConvert\ParaParaConvert.vcxproj", "{354E2D6B-EA77-4293-AD40-153E8299C396}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParaParaSharedMemoryPlayer", "ParaParaSharedMemoryPlayer\ParaParaSharedMemoryPlayer.vcxproj", "{2D3C54B6-E99D-4570-8401-E264F0547303}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +29,10 @@ Global
 		{354E2D6B-EA77-4293-AD40-153E8299C396}.Debug|Win32.Build.0 = Debug|Win32
 		{354E2D6B-EA77-4293-AD40-153E8299C396}.Release|Win32.ActiveCfg = Release|Win32
 		{354E2D6B-EA77-4293-AD40-153E8299C396}.Release|Win32.Build.0 = Release|Win32
+		{2D3C54B6-E99D-4570-8401-E264F0547303}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2D3C54B6-E99D-4570-8401-E264F0547303}.Debug|Win32.Build.0 = Debug|Win32
+		{2D3C54B6-E99D-4570-8401-E264F0547303}.Release|Win32.ActiveCfg = Release|Win32
+		{2D3C54B6-E99D-4570-8401-E264F0547303}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
