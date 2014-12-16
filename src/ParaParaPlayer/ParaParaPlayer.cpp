@@ -30,6 +30,7 @@ int main(int argc, char* argv[])
 
 	bool break_flag = false;
 	bool enable_play = false;
+	bool repeat_play = true;
 	int frame_count = 0;
 
 	cv::Point play_icon[3];
@@ -59,8 +60,13 @@ int main(int argc, char* argv[])
 		if (enable_play) {
 			frame_count++;
 			if (images.size() == frame_count) {
-				frame_count = images.size() - 1;
-				enable_play = false;
+				if (repeat_play) {
+					frame_count = 0;
+				}
+				else {
+					frame_count = images.size() - 1;
+					enable_play = false;
+				}
 			}
 		}
 
